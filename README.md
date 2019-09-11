@@ -30,9 +30,11 @@ Ubuntu 18.04.3 - https://ubuntu.com/download/desktop
 Coverage.py - https://coverage.readthedocs.io/en/coverage-4.2/install.html
 
 ### Report Output
-![Unit Test Output part 1](/PPA1 Images/Unit_Test_Output1.png)
-![Unit Test Output part 2](/PPA1 Images/Unit_Test_Output2.png)
+![Unit Test Output part 1](https://github.com/danilo-souza/PPA1---Intro-to-Unit-Testing-T-BDD/blob/master/PPA1%20Images/Unit_Test_Output1.png)
+![Unit Test Output part 2](https://github.com/danilo-souza/PPA1---Intro-to-Unit-Testing-T-BDD/blob/master/PPA1%20Images/Unit_Test_Output2.png)
+
 ### Test Coverage Report
+![Coverage Test Output](https://github.com/danilo-souza/PPA1---Intro-to-Unit-Testing-T-BDD/blob/master/PPA1%20Images/Coverage_Test_Output.png)
 
 ### Student Overview
 Before beggining this assignment I had very little unit testing & TDD experience. Currently, I think that unit testing & TDD are very useful and can help developers better the quality of their code, however it is also very time consuming making it less desirable in small and simple projects. I think that unit testing & TDD can be very useful in real projects that involve complex algorithms and multiple people working on the same feature as it makes it easier for both novice and experienced developers to produce functional and reliable code. The benefits of TDD is that it gives developers confidence in pushing out new features and changing old ones; the drawbacks is that it substantially increases the development time in the short term. - *Danilo De Souza*
