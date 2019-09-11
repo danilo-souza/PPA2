@@ -6,16 +6,17 @@ Unit tests are going to be named after the function that they are testing. Usual
 You can run all the tests by running the Unit_Tests.py file which just calls all of the functions in all of the unit tests for you.
 
 ### Setup and Execution Instructions
-For this assignment I used the **Python 3.6.8** programming language, the **Ubuntu 18.04.3 LTS** operating system, and the **Coverage.py, version 4.5.4 with C extension** tool. Download Links Below.
+For this assignment I used the **Python 3.6.8** programming language, the **Ubuntu 18.04.3 LTS** operating system, the **Coverage.py, version 4.5.4 with C extension** tool, and the **PyCharm** IDE. Download Links Below.
 
 Instructions to run the programs:
 1. Get the Ubuntu 18.04.3 LTS.
 2. Install Python 3.6.8. Ubuntu should come wiht Python installed, however if it doesn't you can either use the link below or open the terminal and use the commands:
 $ sudo apt-get update
 $ sudo apt-get install python3.6
-3. Get Coverage.py if you wish to test for code coverage. To get it use the link below and follow the instructions given (Make sure to download this to the same directory that the tests are on).
-4. Download the program and the unit tests, leave them in the same directory.
-5. At this point you can either run* PPA1.py in order to access the menu and use the program normally or run Unit_Tests.py to run the unit tests
+4. Install PyCharm
+5. Get Coverage.py if you wish to test for code coverage. To get it use the link below and follow the instructions given (Make sure to download this to the same directory that the tests are on).
+6. Download the program and the unit tests, leave them in the same directory. You can open them in PyCharm by opening PyCharm going to file and open, then go to your files location and select one.
+7. At this point you can either run* PPA1.py in order to access the menu and use the program normally or run Unit_Tests.py to run the unit tests
 
 * In order to run the program go to its directory in the terminal and type python3 *programname*
 
@@ -28,6 +29,7 @@ Download Links:
 Python 3.6.8 - https://www.python.org/downloads/release/python-368/
 Ubuntu 18.04.3 - https://ubuntu.com/download/desktop
 Coverage.py - https://coverage.readthedocs.io/en/coverage-4.2/install.html
+PyCharm - https://www.jetbrains.com/pycharm/
 
 ### Report Output
 ![Unit Test Output part 1](https://github.com/danilo-souza/PPA1---Intro-to-Unit-Testing-T-BDD/blob/master/PPA1%20Images/Unit_Test_Output1.png)
