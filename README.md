@@ -30,7 +30,8 @@ Ubuntu 18.04.3 - https://ubuntu.com/download/desktop
 Coverage.py - https://coverage.readthedocs.io/en/coverage-4.2/install.html
 
 ### Report Output
-
+![Unit Test Output part 1](/PPA1 Images/Unit_Test_Output1.png)
+![Unit Test Output part 2](/PPA1 Images/Unit_Test_Output2.png)
 ### Test Coverage Report
 
 ### Student Overview
