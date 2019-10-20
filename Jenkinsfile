@@ -17,6 +17,7 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
+                    image None
                 }
             }
             steps {
