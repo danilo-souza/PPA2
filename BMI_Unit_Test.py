@@ -8,7 +8,7 @@ def input_test():
     global test_passed, test_failed
 
     #test height upper bounds; height =< 9 feet, weight =< 1400 pounds
-    height_feet = 9
+    height_feet = 8
     height_inches = 1
     weight = 1400
 
