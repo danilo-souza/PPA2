@@ -1,3 +1,4 @@
+import sys
 from BMI import BMI
 
 total_tests = 7
@@ -111,3 +112,6 @@ def stats():
     print(test_passed, "out of", total_tests, "tests passed")
     print(test_failed, "out of", total_tests, "tests failed")
     print(test_passed/total_tests * 100, "% of tests passed")
+    
+    if test_failed > 0:
+        sys.exit(1)
