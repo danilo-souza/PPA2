@@ -15,11 +15,6 @@ pipeline {
             }
         }
         stage('Test') {
-            agent {
-                docker {
-                    image 'qnib/pytest'
-                }
-            }
             steps {
                 sh 'python Unit_Tests.py'
             }
