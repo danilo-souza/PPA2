@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image None
+                    image 'python:3-alpine'
                 }
             }
             steps {
