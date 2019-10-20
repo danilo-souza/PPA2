@@ -15,6 +15,10 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                docker {
+                }
+            }
             steps {
                 sh 'python Unit_Tests.py'
             }
