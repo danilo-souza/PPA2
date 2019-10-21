@@ -33,7 +33,7 @@ pipeline {
                 }
             }
             steps{
-                sh 'docker -run --name db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root MYSQL_USER=danilo MYSQL_PASSWORD=password MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT'
+        
                 sh 'python DB_TESTS.py'
             }
         }
