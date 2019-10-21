@@ -29,8 +29,10 @@ pipeline {
                 script{
                     node{
                         label 'database test'
-                        docker.image('mysql').withRun('-e "MYSQL_ROOT_PASSWORD=root MYSQL_USER=danilo MYSQL_PASSWORD=password MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT"').inside("--link ${c.id}:db"){c ->
-  
+                        docker.image('mysql').withRun('-e "MYSQL_ROOT_PASSWORD=root MYSQL_USER=danilo MYSQL_PASSWORD=password MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT"'){c ->
+                            docker.image('mysql').inside("--link ${c.id}:db"){
+                                sh 'while ! mysqladmin ping -hdb --silent; do sleep 1; done'
+                            }
                             
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
                                 sh 'apk add python3-dev'
