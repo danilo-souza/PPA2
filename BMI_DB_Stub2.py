@@ -6,7 +6,7 @@ def setup():
     mydb = MySQLdb.connect(
         host='db',
         user='danilo',
-        password='',
+        password='password',
         database='BMI'
     )
 
