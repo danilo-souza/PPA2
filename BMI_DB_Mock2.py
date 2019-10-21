@@ -4,12 +4,18 @@ def setup():
     global mydb, cursor
     mydb = MySQLdb.connect(
         host='db',
-        user='danilo',
-        password='',
+        user='root',
+        password='root',
         database='BMI'
     )
 
     cursor = mydb.cursor()
+    cursor.execute("CREATE DATABASE IF NOT EXISTS BMI")
+    mydb.commit()
+
+    cursor.execute("USE BMI")
+    mydb.commit()
+
 
 def canCloseDB():
     setup()

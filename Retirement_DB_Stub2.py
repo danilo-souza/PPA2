@@ -5,12 +5,16 @@ def setup():
     global mydb, cursor
     mydb = MySQLdb.connect(
         host='db',
-        user='danilo',
-        password='',
-        database='RETIREMENT'
+        user='root',
+        password='root'
     )
 
     cursor = mydb.cursor()
+    cursor.execute("CREATE DATABASE IF NOT EXISTS RETIREMENT")
+    mydb.commit()
+
+    cursor.execute("USE RETIREMENT")
+    mydb.commit()
 
     x = cursor.execute("SHOW TABLES")
 
