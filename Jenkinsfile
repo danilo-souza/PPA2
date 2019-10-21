@@ -11,6 +11,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'apk add --no-cache --virtual .build-deps gcc musl-dev'
                 sh 'apk add mariadb-dev'
                 sh 'pip install mysqlclient'
             }
