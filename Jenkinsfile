@@ -31,7 +31,10 @@ pipeline {
                         label 'database test'
                         docker.image('mysql:5.7').withRun('-p 3306:3306 -e "MYSQL_ROOT_PASSWORD=root" -e "MYSQL_DATABASE=BMI" -e "MYSQL_DATABASE=RETIREMENT"'){c ->
                             docker.image('mysql').inside("--link ${c.id}:db"){
+     
                                 sh 'while ! mysqladmin ping -hdb --silent; do sleep 1; done'
+                                sh 'mysqladmin create BMI'
+                                sh 'mysqladmin create RETIREMENT'
                             }
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
@@ -40,7 +43,7 @@ pipeline {
                                 sh 'apk add --no-cache --virtual .build-deps gcc musl-dev'
                                 sh 'pip install mysqlclient'
 
-                         
+                        
                                 sh 'python3 DB_TESTS.py'
                             }
                          }
