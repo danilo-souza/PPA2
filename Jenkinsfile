@@ -8,11 +8,9 @@ pipeline {
             agent {
                 docker {
                     image 'mysql:5.7'
-                    image 'python:3-alpine'
                 }
             }
             steps {
-                sh 'python -m py_compile BMI.py Retirement.py ShortestDistance.py SplitTheTip.py'
                 sh 'pip install mysqlclient'
             }
         }
