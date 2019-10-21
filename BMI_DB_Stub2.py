@@ -4,9 +4,9 @@ from datetime import datetime
 def setup():
     global mydb, cursor
     mydb = MySQLdb.connect(
-        host='localhost',
+        host='db',
         user='danilo',
-        password='password',
+        password='',
         database='BMI'
     )
 
