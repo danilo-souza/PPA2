@@ -7,10 +7,11 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'mysql:5.7'
+                    image 'python:3-alpine'
                 }
             }
             steps {
+                sh 'apk add mariadb-dev'
                 sh 'pip install mysqlclient'
             }
         }
