@@ -25,6 +25,9 @@ pipeline {
             }
         }
         stage('DB_Test') {
+            agent{
+                image 'python:3-alpine'
+            }
             steps{
                 script{
                     node{
