@@ -29,7 +29,7 @@ pipeline {
                 script{
                     node{
                         label 'database test'
-                        docker.image('mysql').withRun('-e "MYSQL_ROOT_PASSWORD=root MYSQL_USER=danilo MYSQL_PASSWORD=password MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT" -p 3306:3306'){c ->
+                        docker.image('mysql').withRun('-e "MYSQL_ROOT_PASSWORD=root MYSQL_USER=danilo MYSQL_PASSWORD=password MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT"'){c ->
                             docker.image('mysql').inside("--link ${c.id}:db"){}
                             
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
@@ -37,9 +37,6 @@ pipeline {
                                 sh 'apk add python-dev mariadb-dev'
                                 sh 'apk add --no-cache --virtual .build-deps gcc musl-dev'
                                 sh 'pip install mysqlclient'
-                                
-                                sh 'service mysql start'
-                                sh 'service mysql status'
                          
                                 sh 'python3 DB_TESTS.py'
                             }
