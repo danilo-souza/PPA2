@@ -1,9 +1,9 @@
 #Test Doubles Functions
 #import BMI_DB_Fake, BMI_DB_Mock1, BMI_DB_Mock2, BMI_DB_Stub
-import BMI_DB
+#import BMI_DB
 
 def BMI(height_feet, height_inches, weight):
-    BMI_DB.setup()
+    #BMI_DB.setup()
 
     db_height = str(height_feet) + "'" + str(height_inches)
     db_weight = weight
@@ -13,8 +13,8 @@ def BMI(height_feet, height_inches, weight):
         #BMI_DB_Mock2.retrieveEntries()
         #BMI_DB_Stub.retrieveEntries()
 
-    if not BMI_DB.isEmpty():
-        BMI_DB.retriveEntries()
+    #if not BMI_DB.isEmpty():
+    #    BMI_DB.retriveEntries()
 
     #Converting weight from pounds to kg, also checking if weight is a number
     try:
@@ -61,7 +61,7 @@ def BMI(height_feet, height_inches, weight):
 
     #BMI_DB_Mock1.addEntry(db_height, db_weight, output)
     #BMI_DB_Fake.addEntry(db_height, db_weight, output)
-    BMI_DB.addEntry(db_height, db_weight, output)
-    BMI_DB.closeDB()
+    #BMI_DB.addEntry(db_height, db_weight, output)
+    #BMI_DB.closeDB()
 
     return output
