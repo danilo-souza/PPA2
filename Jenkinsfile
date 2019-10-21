@@ -29,10 +29,10 @@ pipeline {
                 script{
                     node{
                         label 'database test'
-
-                        docker.image('python:3-alpine').pull()
                         docker.image('mysql').withRun('-e "MYSQL_ROOT_PASSWORD=root MYSQL_USER=danilo MYSQL_PASSWORD=password MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT" -p 3306:3306'){c ->
-                         sh 'python DB_TESTS.py'
+                            docker.image('python:3-alpine').pull()
+                         
+                            sh 'python DB_TESTS.py'
                          }
                     }
                 }
