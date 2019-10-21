@@ -34,6 +34,7 @@ pipeline {
                             
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
                                 sh 'apk add python3-dev'
+                                sh 'apk add python-dev default-libmysqlclient-dev'
                                 sh 'pip install mysqlclient'
                          
                                 sh 'python3 DB_TESTS.py'
