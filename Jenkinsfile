@@ -33,8 +33,6 @@ pipeline {
                             docker.image('mysql').inside("--link ${c.id}:db"){
      
                                 sh 'while ! mysqladmin ping -hdb --silent; do sleep 1; done'
-                                sh 'mysqladmin create BMI'
-                                sh 'mysqladmin create RETIREMENT'
                             }
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
