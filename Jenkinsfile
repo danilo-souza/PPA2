@@ -29,7 +29,7 @@ pipeline {
                 script{
                     node{
                         label 'database test'
-                        docker.image('mysql-server:5.5').withRun('-p 3306:3306 -e "MYSQL_ROOT_PASSWORD=root MYSQL_USER=danilo MYSQL_PASSWORD=password MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT"'){c ->
+                        docker.image('mysql-server').withRun('-p 3306:3306 -e "MYSQL_ROOT_PASSWORD=root MYSQL_USER=danilo MYSQL_PASSWORD=password MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT"'){c ->
                             docker.image('mysql').inside("--link ${c.id}:db"){
                                 sh 'while ! mysqladmin ping -hdb --silent; do sleep 1; done'
                                 sh 'mysql start'
