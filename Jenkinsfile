@@ -32,7 +32,6 @@ pipeline {
                 }
             }
             steps{
-                sh 'pip install mysqlclient'
                 sh 'python DB_TESTS.py'
             }
         }
