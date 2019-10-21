@@ -12,6 +12,7 @@ pipeline {
             }
             steps {
                 sh 'python -m py_compile BMI.py Retirement.py ShortestDistance.py SplitTheTip.py'
+                sh 'pip install mysqlclient'
             }
         }
         stage('Unit_Test') {
@@ -28,7 +29,6 @@ pipeline {
             agent{
                 docker{
                     image 'python:3-alpine'
-                    image 'mysql:8.0.18'
                 }
             }
             steps{
