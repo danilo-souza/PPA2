@@ -37,6 +37,8 @@ pipeline {
                                 sh 'apk add python-dev mariadb-dev'
                                 sh 'apk add --no-cache --virtual .build-deps gcc musl-dev'
                                 sh 'pip install mysqlclient'
+                                
+                                sh 'mysql start'
                          
                                 sh 'python3 DB_TESTS.py'
                             }
