@@ -27,7 +27,7 @@ pipeline {
         stage('DB_Test') {
             agent {
                 node{
-                    checkout scm
+                    label 'database test'
 
                     docker.image('mysql:5').withRun('-e "MYSQL_ROOT_PASSWORD='' MYSQL_USER=danilo MYSQL_PASSWORD=password
                      MYSQL_DATABASE=BMI MYSQL_DATABASE=RETIREMENT -p 3306:3306"'){c ->
