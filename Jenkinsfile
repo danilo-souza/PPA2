@@ -38,6 +38,7 @@ pipeline {
                                 sh 'apk add python3-dev'
                                 sh 'apk add python-dev mariadb-dev'
                                 sh 'apk add --no-cache --virtual .build-deps gcc musl-dev'
+                                sh 'apk add mysql-server'
                                 sh 'pip install mysqlclient'
                                 
                          
