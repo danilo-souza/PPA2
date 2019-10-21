@@ -2,7 +2,7 @@ import MySQLdb
 
 def canConnect():
     mydb = MySQLdb.connect(
-        host='localhost',
+        host='db',
         user='danilo',
         password='password',
         database='BMI'
