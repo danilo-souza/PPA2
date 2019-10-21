@@ -4,7 +4,7 @@ def canConnect():
     mydb = MySQLdb.connect(
         host='db',
         user='danilo',
-        password='p',
+        password='',
         database='BMI'
     )
 
