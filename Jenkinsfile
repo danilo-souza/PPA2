@@ -28,6 +28,7 @@ pipeline {
             agent{
                 docker{
                     image 'python:3-alpine'
+                    image 'mysql:8.0.18'
                 }
             }
             steps{
