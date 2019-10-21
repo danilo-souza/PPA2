@@ -27,6 +27,7 @@ pipeline {
         stage('DB_Test') {
             agent{
                 docker{
+                    label 'docker'
                     image 'python:3-alpine'
                     image 'mysql'
                 }
