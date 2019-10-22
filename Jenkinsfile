@@ -19,7 +19,7 @@ pipeline {
                 script{
                     node{
                         label 'database test'
-                        docker.image('postman/newman_ubuntu1404').withRun('--network=host newman Unit_Tests.postman_collection.json'){
+                        docker.image('postman/newman').withRun('--network=host newman Unit_Tests.postman_collection.json'){
                             sh 'echo Running'
                         }
                     }
