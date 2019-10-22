@@ -15,14 +15,15 @@ pipeline {
             }
         }
         stage('Web Functional Tests') {
-           stage('Build') {
-            agent {
-                docker {
-                    image 'python:3-alpine'
+           stage('Web Function Test') {
+                agent {
+                    docker {
+                        image 'python:3-alpine'
+                    }
                 }
-            }
-            steps {
-                sh 'newman run Unit_Tests.postman_collection.json'
+                steps {
+                    sh 'newman run Unit_Tests.postman_collection.json'
+                }
             }
         }
         stage('DB_Test') {
