@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "fac363a2-91c8-49ac-ab37-84de4933834b",
+		"name": "Unit_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BMI_DBEntries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "207a0c30-6206-4ae9-b60d-b6bdb3f1c0af",
+						"exec": [
+							"pm.test(\"Response is OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response body must be a valid response\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"Height\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/BMI",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"BMI"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BMI_AddEntry",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "325b46ce-c9fb-45fc-8a7d-e350443b38a2",
+						"exec": [
+							"pm.test(\"Response is OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response body must be a valid response\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"Request Accepted\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/BMI/5/6/140",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"BMI",
+						"5",
+						"6",
+						"140"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retirement_DBEntries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1595669e-64a9-48e5-9bfc-cf2a59d8ca27",
+						"exec": [
+							"pm.test(\"Response is OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response body must be a valid response\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"Age\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/RETIREMENT",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"RETIREMENT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retirement_AddEntry",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2cd3f08f-1398-4c11-a54d-0e47a74631df",
+						"exec": [
+							"pm.test(\"Response is OK\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response body must be a valid response\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"Request Accepted\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/RETIREMENT/20/500/25/1000",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"RETIREMENT",
+						"20",
+						"500",
+						"25",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
