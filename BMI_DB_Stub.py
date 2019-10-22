@@ -23,13 +23,13 @@ def setup():
 
 def canRetriveEntries():
     setup()
-    print("Height\tWeight\tOutput\t\tDate")
+    output = "Height\tWeight\tOutput\tDate"
     cursor.execute("SELECT * FROM bmi")
     result = cursor.fetchall()
 
     for tmp in result:
-        print(tmp[0] + "\t" + tmp[1] + "\t" + tmp[2] + "\t" + tmp[3])
+        output = output + tmp[0] + "\t" + tmp[1] + "\t" + tmp[2] + "\t" + tmp[3] + "\n"
 
     cursor.close()
     mydb.close()
-    return True
+    return output

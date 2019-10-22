@@ -25,13 +25,13 @@ def setup():
 
 def canRetriveEntries():
     setup()
-    print("Age\tSalary\tPercentage\tGoal\t\tOutput\tTime")
+    output = "Age\tSalary\tPercentage\tGoal\tOutput\tTime"
     cursor.execute("SELECT * FROM retirement")
     result = cursor.fetchall()
 
     for tmp in result:
-        print(tmp[0] + "\t" + tmp[1] + "\t" + tmp[2] + "\t\t" + tmp[3] + "\t" + tmp[4] + "\t" + tmp[5])
+        output = output + tmp[0] + "\t" + tmp[1] + "\t" + tmp[2] + "\t\t" + tmp[3] + "\t" + tmp[4] + "\t" + tmp[5] + "\n"
 
     cursor.close()
     mydb.close()
-    return True
+    return output
