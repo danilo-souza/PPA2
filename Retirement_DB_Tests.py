@@ -8,7 +8,7 @@ def test():
         print("Can connect to the RETIREMENT database")
     if Retirement_DB_Mock2.canCloseDB():
         print("Can close connection to the RETIREMENT database")
-    if Retirement_DB_Stub2.canAddEntry("test", "test", "test"):
+    if Retirement_DB_Stub2.canAddEntry("test", "test", "test", "test", "test"):
         print("Can add entries to the retirement table")
     if Retirement_DB_Stub.canRetriveEntries():
         print("Can retrieve entries from the retirement table")
