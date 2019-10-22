@@ -31,7 +31,8 @@ pipeline {
                          }
                     }
                 }
-            }
+           }
+        }
         stage('DB_Test') {
             steps{
                 script{
