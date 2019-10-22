@@ -14,16 +14,24 @@ pipeline {
                 sh 'python -m py_compile BMI.py Retirement.py ShortestDistance.py SplitTheTip.py'
             }
         }
-        stage('Unit_Test') {
-            agent {
-                docker {
-                    image 'python:3-alpine'
+        stage('Web Functional Tests') {
+           steps{
+                script{
+                    node{
+                        label 'web test'
+                        docker.image('python:3-alpine').withRun('pip3 install -U Flask'){c ->
+                            docker.image('python:3-alpine').inside("--link ${c.id}:db"){
+
+                                sh 'export Flask_APP=BMI_RETIREMENT_WEB.py'
+                                sh 'flask run'
+                            }
+
+                            docker.image('postman/newman:ubuntu').withRun('-t postman/newman:ubuntu run Unit_Tests.postman_collection.json').inside("--link ${c.id}:db"){
+                            }
+                         }
+                    }
                 }
             }
-            steps {
-                sh 'python Unit_Tests.py'
-            }
-        }
         stage('DB_Test') {
             steps{
                 script{

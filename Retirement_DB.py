@@ -26,12 +26,14 @@ def addEntry(age, salary, percentage, goal, output):
     mydb.commit()
 
 def retriveEntries():
-    print("Age\tSalary\tPercentage\tGoal\t\tOutput\tTime")
+    output = "Age\tSalary\tPercentage\tGoal\tOutput\tTime\n"
     cursor.execute("SELECT * FROM retirement")
     result = cursor.fetchall()
 
     for tmp in result:
-        print(tmp[0] + "\t" + tmp[1] + "\t" + tmp[2] + "\t\t" + tmp[3] + "\t" + tmp[4] + "\t" + tmp[5])
+        output = output + tmp[0] + "\t" + tmp[1] + "\t" + tmp[2] + "\t\t" + tmp[3] + "\t" + tmp[4] + "\t" + tmp[5] + "\n"
+
+    return output
 
 def isEmpty():
     x = cursor.execute("SELECT * FROM retirement")

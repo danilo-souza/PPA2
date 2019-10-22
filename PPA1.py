@@ -64,6 +64,8 @@ while True:
 
     elif int(choice) == 5:
         print("Thank you for using this program!")
+        BMI.bmi_close()
+        #Retirement.retirement_close()
         sys.exit()
 
     else:

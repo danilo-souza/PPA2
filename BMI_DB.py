@@ -23,12 +23,15 @@ def addEntry(height, weight, output):
     mydb.commit()
 
 def retriveEntries():
-    print("Height\tWeight\tOutput\t\tDate")
+    output = ("Height\tWeight\tOutput\t\tDate\n")
     cursor.execute("SELECT * FROM bmi")
     result = cursor.fetchall()
 
     for tmp in result:
-        print(tmp[0] + "\t" + tmp[1] + "\t" + tmp[2] + "\t" + tmp[3])
+        output = output + tmp[0] + "\t" + tmp[1] + "\t" + tmp[2] + "\t" + tmp[3] + "\n"
+
+    print(output)
+    return output
 
 def isEmpty():
     x = cursor.execute("SELECT * FROM bmi")
