@@ -34,7 +34,7 @@ pipeline {
                                 sh 'export FLASK_APP=BMI_RETIREMENT_WEB_TEST.py'
 
 
-                                sh 'flask run'
+                                sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
                             }
 
                             docker.image('postman/newman:ubuntu').inside("--link ${c.id}:db"){
