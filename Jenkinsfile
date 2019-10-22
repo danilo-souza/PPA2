@@ -19,7 +19,7 @@ pipeline {
                 script{
                     node{
                         label 'web test'
-                        docker.image('ubuntu:latest').withRun('apt-get update -y'){c ->
+                        docker.image('ubuntu:latest').withRun('echo "Hello"'){c ->
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
 
                                 sh 'pip3 install -U Flask'
