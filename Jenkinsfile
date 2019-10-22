@@ -34,12 +34,13 @@ pipeline {
                                 sh 'export FLASK_APP=BMI_RETIREMENT_WEB_TEST.py'
 
 
-                                sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
+                                docker.image('python:3-alpine').withRun('-it --rm "BMI_RETIREMENT_WEB_TEST.py"'){d->
+                                    docker.image('postman/newman:ubuntu').inside("--link ${d.id}:db"){
+                                        sh 'newman run Unit_Tests.postman_collection.json'
+                                    }
+                                }
                             }
 
-                            docker.image('postman/newman:ubuntu').inside("--link ${c.id}:db"){
-                                sh 'newman run Unit_Tests.postman_collection.json'
-                            }
                          }
                     }
                 }
