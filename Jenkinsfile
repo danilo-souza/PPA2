@@ -20,12 +20,12 @@ pipeline {
 
                     
                     args '--network=host'
-                    image "postman/newman"
+                    image 'postman/newman'
                 }
             }
             steps {
                 script{
-                    docker.image("postman/newman").withRun("--network=host newman run Unit_Tests.postman_collection.json")
+                    docker.image('postman/newman').withRun('--network=host newman run Unit_Tests.postman_collection.json')
                 }
                 sh 'newman run Unit_Tests.postman_collection.json'
             }
