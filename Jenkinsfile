@@ -20,7 +20,7 @@ pipeline {
                     node{
                         label 'web test'
                         sh 'pwd'
-                        docker.image('ubuntu').withRun('-v /var/run/docker.sock:/var/run/docker.sock '){c ->
+                        docker.image('ubuntu').withRun('-v /var/run/docker.sock:/var/run/docker.sock '){
                             docker.image('python:3-alpine').inside(""){c->
                                 sh 'BMI_RETIREMENT_WEB_TEST.py'
                             }
