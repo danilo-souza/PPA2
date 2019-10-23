@@ -20,15 +20,16 @@ pipeline {
                     image 'python:3-alpine'
                 }
             }
-            steps {
-                sh 'pip install -U Flask'
+            steps {  
                 parallel(
                     a:{
+                        sh 'pip install -U Flask'
                         sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
                     },
                     b:{
                         sh 'apk add nodejs npm'
                         sh 'npm install -g newman'
+                        
                         sh 'newman run Unit_Tests.postman_collection.json'
                     }
                 )
