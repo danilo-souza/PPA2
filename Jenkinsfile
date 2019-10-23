@@ -23,6 +23,8 @@ pipeline {
             steps{
                 script{
                     node{
+                        docker.image('python:3-alpine').withRun('-p 5000:5000 -v "$(pwd)":$(pwd) BMI_RETIREMENT_WEB_TEST.py'){
+                        }
                         sh 'docker build -t webapp'
                         sh 'docker network create WebApp'
                         sh 'docker run -d --network=WebApp -p 5000:5000 BMI_RETIREMENT_WEB_TEST.py python:3-alpine'
