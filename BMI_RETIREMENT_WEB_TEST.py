@@ -1,5 +1,4 @@
 import BMI_DB_Fake, Retirement_DB_Fake
-import sys
 from flask import Flask
 from flask import render_template
 
@@ -22,6 +21,7 @@ def retrieveRETIREMENT():
 def retirement(age, salary, percentage, goal):
     Retirement_DB_Fake.addEntry(age, salary, percentage, goal)
     return 'Request Accepted'
+
 
 if __name__=="__main__":
     app.run()
