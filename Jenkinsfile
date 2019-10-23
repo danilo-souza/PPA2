@@ -19,7 +19,7 @@ pipeline {
                 script{
                     node{
                         label 'web test'
-                        docker.image('ubuntu').withRun('python BMI_RETIREMENT_WEB_TEST.py'){c ->
+                        docker.image('ubuntu').withRun('ls'){c ->
                           
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
