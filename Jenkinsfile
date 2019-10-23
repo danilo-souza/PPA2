@@ -15,9 +15,7 @@ pipeline {
             }
         }
         stage('Functional Tests') {
-            agent {
-                
-            }
+   
             steps{
                 script{
                     node{
