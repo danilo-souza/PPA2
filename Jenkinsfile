@@ -20,19 +20,27 @@ pipeline {
                     image 'python:3-alpine'
                 }
             }
-            steps {  
-                parallel(
-                    a:{
-                        sh 'pip install -U Flask'
-                        sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
-                    },
-                    b:{
-                        sh 'apk add nodejs npm'
-                        sh 'npm install -g newman'
-                        
-                        sh 'newman run Unit_Tests.postman_collection.json'
+            steps {
+                script{
+                    try{
+                        parallel(
+                            a:{
+                                sh 'pip install -U Flask'
+                                sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
+                            },
+                            b:{
+                                sh 'apk add nodejs npm'
+                                sh 'npm install -g newman'
+
+                                script{
+                                    sh 'newman run Unit_Tests.postman_collection.json'
+                                    throw
+                                }
+                            }
+                        )
                     }
-                )
+                    catch (Exception e){}
+                }
             }
         }
         stage('DB_Test') {

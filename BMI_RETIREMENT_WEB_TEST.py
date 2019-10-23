@@ -23,9 +23,5 @@ def retirement(age, salary, percentage, goal):
     Retirement_DB_Fake.addEntry(age, salary, percentage, goal)
     return 'Request Accepted'
 
-@app.route('/exit')
-def exit():
-    sys.exit(0)
-
 if __name__=="__main__":
     app.run()
