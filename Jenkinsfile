@@ -20,6 +20,7 @@ pipeline {
                     node{
                         label 'web test'
                         docker.image('python:3-alpine').withRun('-u root'){c ->
+                            sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
                                 sh 'apk add nodejs npm'
