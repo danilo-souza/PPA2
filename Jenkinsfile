@@ -27,7 +27,7 @@ pipeline {
                         sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
                     },
                     b:{
-                        sh 'apk get node.js'
+                        sh 'apk add node.js'
                         sh 'npm install -g newman'
                         sh 'newman Unit_Tests.postman_collection.json'
                     }
