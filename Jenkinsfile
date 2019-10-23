@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'postman/newman'
+                    image 'python:3-alpine'
                 }
             }
             steps {
@@ -15,15 +15,13 @@ pipeline {
             }
         }
         stage('Web Functional Tests') {
-             steps{
-                script{
-                    node{
-                        label 'database test'
-                        docker.image('postman/newman').withRun('--network=host newman Unit_Tests.postman_collection.json'){
-                            sh 'echo Running'
-                        }
-                    }
+             agent {
+                docker {
+                    image 'postman/newman'
                 }
+            }
+            steps {
+                sh 'newman Unit_Tests.postman_collection.json'
             }
         }
         stage('DB_Test') {
