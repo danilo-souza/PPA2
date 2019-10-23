@@ -31,6 +31,7 @@ pipeline {
                         sh 'npm install -g newman'
                         
                         sh 'newman run Unit_Tests.postman_collection.json'
+                        sh 'exit 0'
                     }
                 )
             }
