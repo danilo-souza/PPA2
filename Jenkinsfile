@@ -16,9 +16,7 @@ pipeline {
         }
         stage('Functional Tests') {
             agent {
-                dockerfile {
-                    
-                }
+                
             }
             steps{
                 script{
