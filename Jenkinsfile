@@ -31,7 +31,7 @@ pipeline {
                         sh 'docker rm app'
                         sh 'docker stop newm'
                         sh 'docker rm newm'
-                        sh 'network rm Web'
+                        sh 'docker network rm Web'
                         
                     }
                 }
