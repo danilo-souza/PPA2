@@ -16,15 +16,17 @@ pipeline {
         }
         stage('Web Functional Tests') {
              agent {
-                dockerfile {
+                docker{
 
-                    additionalBuildArgs '--network host'
+                    
                     args '--network=host'
-                    
-                    
+                    image "postman/newman"
                 }
             }
             steps {
+                script{
+                    docker.image("postman/newman").withRun("--network=host newman run Unit_Tests.postman_collection.json")
+                }
                 sh 'newman run Unit_Tests.postman_collection.json'
             }
                 
