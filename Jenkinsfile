@@ -19,6 +19,7 @@ pipeline {
                 script{
                     node{
                         label 'web test'
+                        sh 'echo $PATH'
                         docker.image('python:3-alpine').withRun(' python /BMI_RETIREMENT_WEB_TEST.py'){c ->
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
