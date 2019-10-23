@@ -41,6 +41,7 @@ pipeline {
                     }
                     catch (Exception e){
                         currentBuild.result='Success'
+                        e.getMessage()
                     }
                 }
             }
