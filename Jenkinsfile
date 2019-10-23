@@ -59,12 +59,16 @@ pipeline {
 
                                 
                                 sh 'newman run Unit_Tests.postman_collection.json'
-                                throw Exception
+                                currentBuild.result='Success'
+                                throw new Exception ("exception")
                                 
                             }
                         )
                     }
-                    catch (Exception e){}
+                    catch (Exception e){
+                        currentBuild.result='Success'
+                        e.getMessage()
+                    }
                 }
             }
         }
