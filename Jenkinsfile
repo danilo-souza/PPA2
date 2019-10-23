@@ -32,10 +32,10 @@ pipeline {
                                 sh 'apk add nodejs npm'
                                 sh 'npm install -g newman'
 
-                                script{
-                                    sh 'newman run Unit_Tests.postman_collection.json'
-                                    throw
-                                }
+                                
+                                sh 'newman run Unit_Tests.postman_collection.json'
+                                throw Exception
+                                
                             }
                         )
                     }
