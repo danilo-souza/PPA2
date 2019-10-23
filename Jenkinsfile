@@ -21,7 +21,7 @@ pipeline {
                     additionalBuildArgs '--network host'
                     args '--network=host'
                     
-                    image 'postman/newman'
+                    
                 }
             }
             steps {
