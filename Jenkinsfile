@@ -19,7 +19,7 @@ pipeline {
                 script{
                     node{
                         label 'web test'
-                        docker.image('python:3-alpine').withRun('--network=host python BMI_RETIREMENT_WEB_TEST.py'){c ->
+                        docker.image('python:3-alpine').withRun('--network=host python /BMI_RETIREMENT_WEB_TEST.py'){c ->
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
                                 sh 'apk add nodejs npm'
