@@ -1,3 +1,3 @@
 FROM postman/newman
 
-RUN newman run Unit_Tests.postman_collection.json
+RUN newman run $(pwd)/Unit_Tests.postman_collection.json
