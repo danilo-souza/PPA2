@@ -171,28 +171,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Exit",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "localhost:5000/exit",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"exit"
-					]
-				}
-			},
-			"response": []
 		}
 	]
 }
