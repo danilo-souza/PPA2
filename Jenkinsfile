@@ -19,11 +19,9 @@ pipeline {
             steps{
                 script{
                     node{
-                        label 'WebApp'
-                        docker.image('python:3-alpine').withRun('-p 5000:5000 -v "$(pwd)":$(pwd) python BMI_RETIREMENT_WEB_TEST.py'){
-                        }
-                        sh 'docker build -t webapp'
+                        label 'WebApp' 
                         sh 'docker network create WebApp'
+                        sh 'docker build -t webapp'
                         sh 'docker run -d --network=WebApp -p 5000:5000 BMI_RETIREMENT_WEB_TEST.py python:3-alpine'
                         sh 'docker run --network=WebApp newman run Unit_Tests.json_collection.py postman/newman'
                     }
