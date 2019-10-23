@@ -34,7 +34,7 @@ pipeline {
 
                                 
                                 sh 'newman run Unit_Tests.postman_collection.json'
-                                sh 'exit 0'
+                                exit 0
                                 
                             }
                         )
