@@ -26,7 +26,7 @@ pipeline {
                         sh 'apk add python3'
                         sh 'pip install -U Flask'
                         sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
-                    }
+                    },
                     b:{
                         sh 'newman Unit_Tests.postman_collection.json'
                     }
