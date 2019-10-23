@@ -18,7 +18,7 @@ pipeline {
              agent {
                 docker {
                     image 'python:3-alpine'
-                    additionalBuildArgs '--network host'
+                    
                     args '--network=host'
                 }
             }
