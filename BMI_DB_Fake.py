@@ -3,15 +3,17 @@ from datetime import datetime
 
 dit = {}
 
-def addEntry(height, weight, output):
+def addEntry(height_feet, height_inches, weight):
     global dit
-    dit[str(height) + "\t" + str(weight)] = str(output) + "\t" + str(datetime.now())
+    output = "sample"
+    height = str(height_feet) + "'" + str(height_inches)
+    dit[str(datetime.now())] = str(height) + "\t" + str(weight) + "\t" + str(output)
 
 def retrieveEntry():
     global dit
     output = "Height\tWeight\tOutput\tTime\n"
     for key in dit:
-        output = output + key + "\t" + dit[key] + "\n"
+        output = output + "\t" + dit[key] + key + "\n"
     return output
 
 def isEmpty():

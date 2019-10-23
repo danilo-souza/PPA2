@@ -3,8 +3,9 @@ from datetime import datetime
 
 dit = {}
 
-def addEntry(age, salary, percentage_saved, goal, output):
+def addEntry(age, salary, percentage_saved, goal):
     global dit
+    output = "sample"
     dit[str(datetime.now())] = str(age) + "\t" + str(salary) + "\t" + str(percentage_saved) + "\t\t" + str(goal) + "\t" + str(output)
 
 def retrieveEntry():
