@@ -15,7 +15,7 @@ pipeline {
             }
         }
         stage('Web Functional Tests') {
-             steps{
+            steps{
                 script{
                     node{
                         label 'database test'
