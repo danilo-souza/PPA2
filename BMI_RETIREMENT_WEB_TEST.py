@@ -10,7 +10,7 @@ def retrieveBMI():
 
 @app.route('/BMI/<height_feet>/<height_inches>/<weight>')
 def bmi(height_feet, height_inches, weight):
-    BMI_DB_Fake.canAddEntry(height_feet, height_inches, weight)
+    BMI_DB_Fake.addEntry(height_feet, height_inches, weight)
     return 'Request Accepted'
 
 @app.route('/RETIREMENT')
@@ -19,7 +19,7 @@ def retrieveRETIREMENT():
 
 @app.route('/RETIREMENT/<age>/<salary>/<percentage>/<goal>')
 def retirement(age, salary, percentage, goal):
-    Retirement_DB_Fake.canAddEntry(age, salary, percentage, goal)
+    Retirement_DB_Fake.addEntry(age, salary, percentage, goal)
     return 'Request Accepted'
 
 if __name__=="__main__":

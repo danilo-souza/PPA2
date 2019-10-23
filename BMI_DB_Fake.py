@@ -7,7 +7,7 @@ def addEntry(height, weight, output):
     global dit
     dit[str(height) + "\t" + str(weight)] = str(output) + "\t" + str(datetime.now())
 
-def retrieveEntries():
+def retrieveEntry():
     global dit
     output = "Height\tWeight\tOutput\tTime\n"
     for key in dit:

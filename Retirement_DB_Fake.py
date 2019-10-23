@@ -7,7 +7,7 @@ def addEntry(age, salary, percentage_saved, goal, output):
     global dit
     dit[str(datetime.now())] = str(age) + "\t" + str(salary) + "\t" + str(percentage_saved) + "\t\t" + str(goal) + "\t" + str(output)
 
-def retrieveEntries():
+def retrieveEntry():
     global dit
     output = "Age\tSalary\tPercentage\tGoal\tOutput\tTime\n"
     for key in dit:
