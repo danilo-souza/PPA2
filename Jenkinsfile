@@ -15,26 +15,24 @@ pipeline {
             }
         }
         stage('Functional Tests') {
-            steps {
-                steps{
-                    script{
-                        node{
-                            label 'web test'
-                            docker.image('python:3-alpine').inside(){c ->
-                                docker.image('python:3-alpine').inside("--link ${c.id}:db"){
-                                    sh 'pip install -U Flask'
-                                    sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
-                                }
+            steps{
+                script{
+                    node{
+                        label 'web test'
+                        docker.image('python:3-alpine').inside(){c ->
+                            docker.image('python:3-alpine').inside("--link ${c.id}:db"){
+                                sh 'pip install -U Flask'
+                                sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
+                            }
 
-                                docker.image('python:3-alpine').inside("--link ${c.id}:db"){
-                                    sh 'apk add nodejs npm'
-                                    sh 'npm install -g newman'
+                            docker.image('python:3-alpine').inside("--link ${c.id}:db"){
+                                sh 'apk add nodejs npm'
+                                sh 'npm install -g newman'
 
 
-                                    sh 'newman run Unit_Tests.postman_collection.json'
-                                }
-                             }
-                        }
+                                sh 'newman run Unit_Tests.postman_collection.json'
+                            }
+                         }
                     }
                 }
             }
