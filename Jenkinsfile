@@ -17,17 +17,18 @@ pipeline {
         stage('Web Functional Tests') {
              agent {
                 docker {
-                    image 'postman/newman'
+                    image 'python:3-alpine'
                 }
             }
             steps {
                 parallel(
                     a:{
-                        sh 'apk add python3'
                         sh 'pip install -U Flask'
                         sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
                     },
                     b:{
+                        sh 'apk get node.js'
+                        sh 'npm install -g newman'
                         sh 'newman Unit_Tests.postman_collection.json'
                     }
                 )
