@@ -20,7 +20,7 @@ pipeline {
                     node{
                         label 'web test'
                         sh 'pwd'
-                        docker.image('python:3-alpine').withRun('-v /var/run/docker.sock:/var/run/docker.sock python BMI_RETIREMENT_WEB_TEST.py'){c ->
+                        docker.image('python:3-alpine').withRun('-v /var/run/docker.sock:/var/run/docker.sock BMI_RETIREMENT_WEB_TEST.py'){c ->
                           
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
