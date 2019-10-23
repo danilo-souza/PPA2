@@ -21,7 +21,9 @@ pipeline {
                         label 'web test'
                         sh 'pwd'
                         docker.image('ubuntu').withRun('-v /var/run/docker.sock:/var/run/docker.sock '){c ->
-                            sh 'python BMI_RETIREMENT_WEB_TEST.py'
+                            docker.image('python:3-alpine').inside(""){c->
+                                sh 'BMI_RETIREMENT_WEB_TEST.py'
+                            }
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
                                 sh 'apk add nodejs npm'
