@@ -21,9 +21,9 @@ pipeline {
                 }
             }
             steps {
+                sh 'pip install -U Flask'
                 parallel(
                     a:{
-                        sh 'pip install -U Flask'
                         sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
                     },
                     b:{
