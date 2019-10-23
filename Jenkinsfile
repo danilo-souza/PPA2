@@ -29,7 +29,7 @@ pipeline {
                     b:{
                         sh 'apk add nodejs npm'
                         sh 'npm install -g newman'
-                        sh 'newman Unit_Tests.postman_collection.json'
+                        sh 'newman run Unit_Tests.postman_collection.json'
                     }
                 )
             }
