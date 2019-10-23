@@ -1,3 +1,4 @@
 FROM postman/newman
 
-RUN newman run $(pwd)/Unit_Tests.postman_collection.json
+RUN apk add nodejs npm
+RUN npm install -g newman
