@@ -15,11 +15,21 @@ pipeline {
             }
         }
         stage('Functional Tests') {
+            stage('Build') {
+            agent {
+                dockerfile {
+                    FROM python:3-alpine
+                    WORKDIR $pwd
+                    COPY BMI_RETIREMENT_WEB_TEST.py
+                    CMD["BMI_RETIREMENT_WEB_TEST.py"]
+                }
+            }
             steps{
                 script{
                     node{
                         label 'web test'
-                        sh 'docker run -d -v $(pwd) python BMI_RETIREMENT_WEB_TEST.py'
+                        sh 'docker build -t TEST/BMI_RETIREMENT_WEB_TEST'
+                        
                         docker.image('ubuntu').withRun('-v /var/run/docker.sock:/var/run/docker.sock '){
                             docker.image('python:3-alpine').inside("-u root"){c->
                                 sh '$(pwd)/BMI_RETIREMENT_WEB_TEST.py'
