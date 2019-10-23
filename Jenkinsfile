@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'newman Unit_Tests.postman_collection.json'
+                sh 'docker run --network=host -t postman/newman:ubuntu run Unit_Tests.postman_collection.json'
             }
         }
         stage('DB_Test') {
