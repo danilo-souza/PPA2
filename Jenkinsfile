@@ -39,7 +39,9 @@ pipeline {
                             }
                         )
                     }
-                    catch (Exception e){}
+                    catch (Exception e){
+                        sh 'echo Hello'
+                    }
                 }
             }
         }
