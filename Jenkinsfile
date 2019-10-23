@@ -34,13 +34,13 @@ pipeline {
 
                                 
                                 sh 'newman run Unit_Tests.postman_collection.json'
-                                throw Exception
+                                throw error
                                 
                             }
                         )
                     }
-                    catch (Exception e){
-                        sh 'echo Hello'
+                    catch (error){
+                        sh 'echo Continue'
                     }
                 }
             }
