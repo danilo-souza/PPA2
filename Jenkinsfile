@@ -19,7 +19,7 @@ pipeline {
                 script{
                     node{
                         label 'web test'
-                        docker.image('python:3-alpine'){c ->
+                        docker.image('python:3-alpine').withRun(''){c ->
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
                                 sh 'pip install -U Flask'
                                 sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
