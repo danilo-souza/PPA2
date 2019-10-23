@@ -34,13 +34,13 @@ pipeline {
 
                                 
                                 sh 'newman run Unit_Tests.postman_collection.json'
-                                throw RuntimeException
+                                throw new Exception ("Passed")
                                 
                             }
                         )
                     }
                     catch (Exception e){
-                        sh 'echo Step Passed'
+                        
                     }
                 }
             }
