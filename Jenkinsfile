@@ -17,7 +17,7 @@ pipeline {
         stage('Web Functional Tests') {
              agent {
                 docker {
-                    image 'python:3-alpine'
+                    image 'postman/newman'
                     
                     args '--network=host'
                 }
