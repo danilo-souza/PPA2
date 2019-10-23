@@ -21,10 +21,23 @@ pipeline {
                     node{
                         label 'WebApp' 
                         
+                        sh 'docker stop app'
+                        sh 'docker rm app'
+                        sh 'docker stop newm'
+                        sh 'docker rm newm'
+                        sh 'network rm Web'
+                        
+                        sh 'docker network create Web'
                         sh 'docker run -dit --name app --network=Web -v "$(pwd)":"$(pwd)" -w /var/jenkins_home/workspace/PPA2 -p 6000:6000 python:3-alpine'
                         sh 'docker exec -d app python ./BMI_RETIREMENT_WEB_TEST.py'
                         sh 'docker run -dit -m 300G --name newm --network=Web -v "$(pwd)" postman/newman'
                         sh 'docker exec -d newm newman run "Unit_Tests.postman_collection.json"'
+                        
+                        sh 'docker stop app'
+                        sh 'docker rm app'
+                        sh 'docker stop newm'
+                        sh 'docker rm newm'
+                        sh 'network rm Web'
                         
                     }
                 }
