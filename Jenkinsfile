@@ -23,7 +23,7 @@ pipeline {
                         
                         sh 'docker run -dit --name app --network=Web -v "$(pwd)":"$(pwd)" -w /var/jenkins_home/workspace/PPA2 -p 6000:6000 python:3-alpine'
                         sh 'docker exec -d app python ./BMI_RETIREMENT_WEB_TEST.py'
-                        sh 'docker run --name newm --network=Web -v "$(pwd)":/temp postman/newman'
+                        sh 'docker run -d --name newm --network=Web -v "$(pwd)":/temp postman/newman'
                         sh 'docker exec newm newman Unit_Tests.postman_collection.json'
                         
                     }
