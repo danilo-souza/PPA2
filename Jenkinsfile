@@ -16,10 +16,12 @@ pipeline {
         }
         stage('Web Functional Tests') {
              agent {
-                docker {
-                    image 'postman/newman'
-                    
+                dockerfile {
+
+                    additionalBuildArgs '--network host'
                     args '--network=host'
+                    
+                    image 'postman/newman'
                 }
             }
             steps {
