@@ -34,6 +34,7 @@ pipeline {
 
                                 
                                 sh 'newman run Unit_Tests.postman_collection.json'
+                                currentBuild.result='Success'
                                 throw new Exception ("Passed")
                                 
                             }
