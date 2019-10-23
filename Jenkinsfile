@@ -15,37 +15,14 @@ pipeline {
             }
         }
         stage('Functional Tests') {
-            stage('Build') {
             agent {
-                dockerfile {
-                    FROM python:3-alpine
-                    WORKDIR $pwd
-                    COPY BMI_RETIREMENT_WEB_TEST.py
-                    CMD["BMI_RETIREMENT_WEB_TEST.py"]
+                docker {
+                    image 'postman/newman'
                 }
             }
             steps{
-                script{
-                    node{
-                        label 'web test'
-                        sh 'docker build -t TEST/BMI_RETIREMENT_WEB_TEST'
-                        
-                        docker.image('ubuntu').withRun('-v /var/run/docker.sock:/var/run/docker.sock '){
-                            docker.image('python:3-alpine').inside("-u root"){c->
-                                sh '$(pwd)/BMI_RETIREMENT_WEB_TEST.py'
-                            }
-
-                            docker.image('python:3-alpine').inside("--link ${c.id}:db"){
-                                sh 'apk add nodejs npm'
-                                sh 'npm install -g newman'
-
-
-                                sh 'newman run Unit_Tests.postman_collection.json'
-                            }
-                         }
-                    }
-                }
-            }
+                sh 'newman run Unit_Tests.postman_collection.json'
+            }     
         }
         stage('DB_Test') {
             steps{
