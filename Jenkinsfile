@@ -21,7 +21,7 @@ pipeline {
                         label 'web test'
                         sh 'pwd'
                         docker.image('ubuntu').withRun('-v /var/run/docker.sock:/var/run/docker.sock '){
-                            docker.image('python:3-alpine').inside(""){c->
+                            docker.image('python:3-alpine').inside("-u root"){c->
                                 sh '$(pwd)/BMI_RETIREMENT_WEB_TEST.py'
                             }
 
