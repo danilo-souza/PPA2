@@ -14,32 +14,12 @@ pipeline {
                 sh 'python -m py_compile BMI.py Retirement.py ShortestDistance.py SplitTheTip.py'
             }
         }
-        stage('Web Functional Tests') {
-             agent {
-                docker{
-
-                    
-                    args '--network=host'
-                    image 'postman/newman'
-                }
-            }
-            steps {
-                script{
-                    node{
-                        label 'stuff'
-                        docker.image('postman/newman').withRun('--network=host newman run Unit_Tests.postman_collection.json'){}
-                    }
-                }
-                sh 'newman run Unit_Tests.postman_collection.json'
-            }
-                
-        }
         stage('Functional Tests') {
             steps{
                 script{
                     node{
                         label 'web test'
-                        docker.image('python:3-alpine').withRun('-v $(pwd):/src python BMI_RETIREMENT_WEB_TEST.py'){c ->
+                        docker.image('python:3-alpine').withRun('--network=host python BMI_RETIREMENT_WEB_TEST.py'){c ->
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
                                 sh 'apk add nodejs npm'
