@@ -15,13 +15,13 @@ pipeline {
             }
         }
         stage('Web Functional Tests') {
-            steps{
-                script{
-                    node{
-                        label 'database test'
-                        docker.image('postman/newman:ubuntu').withRun('--network=host newman Unit_Tests.postman_collection.json')
-                    }
+             agent {
+                docker {
+                    image 'postman/newman'
                 }
+            }
+            steps {
+                sh 'newman Unit_Tests.postman_collection.json'
             }
         }
         stage('DB_Test') {
