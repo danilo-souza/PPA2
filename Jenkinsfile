@@ -14,12 +14,24 @@ pipeline {
                 sh 'python -m py_compile BMI.py Retirement.py ShortestDistance.py SplitTheTip.py'
             }
         }
+        stage('Web Functional Tests') {
+             agent {
+                docker {
+                    image 'python:3-alpine'
+                    additionalBuildArgs '--network host'
+                    args '--network=host'
+                }
+            }
+            steps {
+                sh 'newman run Unit_Tests.postman_collection.json'
+            }
+                
+        }
         stage('Functional Tests') {
             steps{
                 script{
                     node{
                         label 'web test'
-                        sh '$PATH'
                         docker.image('python:3-alpine').withRun('-v $(pwd):/src python BMI_RETIREMENT_WEB_TEST.py'){c ->
 
                             docker.image('python:3-alpine').inside("--link ${c.id}:db"){
@@ -30,39 +42,6 @@ pipeline {
                                 sh 'newman run Unit_Tests.postman_collection.json'
                             }
                          }
-                    }
-                }
-            }
-        }
-        stage('Web Functional Tests') {
-             agent {
-                docker {
-                    image 'python:3-alpine'
-                }
-            }
-            steps {
-                script{
-                    try{
-                        parallel(
-                            a:{
-                                sh 'pip install -U Flask'
-                                sh 'python3 BMI_RETIREMENT_WEB_TEST.py'
-                            },
-                            b:{
-                                sh 'apk add nodejs npm'
-                                sh 'npm install -g newman'
-
-                                
-                                sh 'newman run Unit_Tests.postman_collection.json'
-                                currentBuild.result='Success'
-                                throw new Exception ("exception")
-                                
-                            }
-                        )
-                    }
-                    catch (Exception e){
-                        currentBuild.result='Success'
-                        e.getMessage()
                     }
                 }
             }
