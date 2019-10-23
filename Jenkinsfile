@@ -20,9 +20,9 @@ pipeline {
                 script{
                     node{
                         label 'WebApp' 
-                        sh 'docker network create WebApp'
-                        sh 'docker run -d --network=WebApp -p 5000:5000 BMI_RETIREMENT_WEB_TEST.py python:3-alpine'
-                        sh 'docker run --network=WebApp newman run Unit_Tests.json_collection.py postman/newman'
+                        sh 'docker network create W
+                        sh 'docker run -d --network=W -p 5000:5000 BMI_RETIREMENT_WEB_TEST.py python:3-alpine'
+                        sh 'docker run --network=W newman run Unit_Tests.json_collection.py postman/newman'
                     }
                 }
             }     
