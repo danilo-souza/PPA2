@@ -9,9 +9,10 @@ def addEntry(age, salary, percentage_saved, goal, output):
 
 def retrieveEntries():
     global dit
-    print("Age\tSalary\tPercentage\tGoal\t\tOutput\tTime")
+    output = "Age\tSalary\tPercentage\tGoal\tOutput\tTime\n"
     for key in dit:
-        print(dit[key] + "\t" + key)
+        output = output + dit[key] + "\t" + key + "\n"
+    return output
 
 def isEmpty():
     global dit

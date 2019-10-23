@@ -9,9 +9,10 @@ def addEntry(height, weight, output):
 
 def retrieveEntries():
     global dit
-    print("Height\tWeight\tOutput\tTime")
+    output = "Height\tWeight\tOutput\tTime\n"
     for key in dit:
-        print(key + "\t" + dit[key])
+        output = output + key + "\t" + dit[key] + "\n"
+    return output
 
 def isEmpty():
     global dit
